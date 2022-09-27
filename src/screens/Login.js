@@ -8,18 +8,9 @@ function Login() {
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
     const responseGoogle = async (response) => {
-        console.log(response);
-        // console.log(response.tokenId);
+        // console.log(response);
         const userobj = jwt_decode(response.tokenId);
         console.log(userobj)
-        // const glog={
-        //     email:userobj.email,
-        //     name:userobj.name
-        // }
-        // console.log(glog)
-        
-        // localStorage.setItem('user', JSON.stringify(glog));
-        // window.location.href = '/dashboard'
         try {
             const tokenId={TokenId:response.tokenId}
             console.log(tokenId)
@@ -51,7 +42,6 @@ function Login() {
         }
         console.log(user);
         try {
-            // setloading(true);
             const result = await axios.post(`${config.api}/api/users/login`, user);
             const logdata = result.data;
             localStorage.setItem('user', JSON.stringify(logdata.temp));
@@ -62,7 +52,6 @@ function Login() {
                 console.log("login failed")
             }
         } catch (error) {
-            // setloading(false);
             console.log(error);
         }
     }

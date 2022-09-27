@@ -24,7 +24,7 @@ function Dashboard() {
 
     useEffect(() => {
         fetchdata()
-    }, [users]);
+    }, []);
     const formik = useFormik({
         initialValues: {
             employeename:"",
@@ -35,9 +35,7 @@ function Dashboard() {
         onSubmit: async (values) => {
             try {
                 const dash = await axios.post(`${config.api}/api/dashboard/adddata`, values);
-                // window.location.reload();
-                // alert(dash.data.message);
-
+                window.location.reload();
             } catch (error) {
                 console.log("Employee not added ");
             }

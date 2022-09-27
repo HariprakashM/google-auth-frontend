@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import GoogleLogin from 'react-google-login';
 import jwt_decode from "jwt-decode"
 import axios from 'axios';
 import { config } from './../config';
 function Register() {
-    let fetchdata =  () => {
-        localStorage.removeItem("user");
-      };
-    useEffect(() => {
-        console.log("done")
-        fetchdata()
-      }, []);
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
     const [username, setusername] = useState('');
@@ -40,7 +33,6 @@ function Register() {
         } catch (error) {
             console.log(error);
         }
-        // localStorage.setItem('user', JSON.stringify(glog));
 
     }
     const errorGoogle = (error) => {
